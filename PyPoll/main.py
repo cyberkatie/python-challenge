@@ -42,6 +42,7 @@ candidates = ["Charles Casper Stockham", "Diana DeGette", "Raymon Anthony Doane"
 ind = number_of_votes.index(max(number_of_votes))
 
 #prints results
+print("election results")
 print(f"total votes: {len(vote_cast)}")
 print(f"Charles Casper Stockham: {(charles/num_vote)*100}% ({charles})")
 print(f"Diana DeGette: {diana/num_vote*100}% ({diana})")
@@ -50,14 +51,14 @@ print(f"the winner is: {candidates[ind]}")
 
 #export results as a .txt file
 pypoll_output = open("pypoll.txt", "w")
-L = ["election results", " ",
-    f"total votes: {len(vote_cast)}", " ",
-    f"Charles Casper Stockham: {(charles/num_vote)*100}% ({charles})", " ",
-    f"Diana DeGette: {diana/num_vote*100}% ({diana})", " ",
-    f"Raymon Anthony Doane: {raymon/num_vote*100}% ({raymon})", " ",
-    f"the winner is: {candidates[ind]}"]
 
-pypoll_output.writelines(L)
+print("election results", file = pypoll_output)
+print(f"total votes: {len(vote_cast)}", file = pypoll_output)
+print(f"Charles Casper Stockham: {(charles/num_vote)*100}% ({charles})", file = pypoll_output)
+print(f"Diana DeGette: {diana/num_vote*100}% ({diana})", file = pypoll_output)
+print(f"Raymon Anthony Doane: {raymon/num_vote*100}% ({raymon})", file = pypoll_output)
+print(f"the winner is: {candidates[ind]}")
+
 pypoll_output.close()
 
 shutil.move("pypoll.txt", "analysis" )
