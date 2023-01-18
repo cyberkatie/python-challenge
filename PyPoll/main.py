@@ -2,6 +2,7 @@
 import os
 import csv
 import pandas as pd
+import shutil
 
 #creates file path
 file_path = "Resources/election_data.csv"
@@ -28,9 +29,9 @@ for i in range(len(vote_cast)):
     elif (vote_cast[i] == 'Raymon Anthony Doane'):
         raymon += 1
  #print each candidates results       
-print(charles)
-print(diana)
-print(raymon)
+#print(charles)
+#print(diana)
+#print(raymon)
 
 #find the number of votes
 num_vote = len(vote_cast)
@@ -57,8 +58,9 @@ print(f"total votes: {len(vote_cast)}", file = pypoll_output)
 print(f"Charles Casper Stockham: {(charles/num_vote)*100}% ({charles})", file = pypoll_output)
 print(f"Diana DeGette: {diana/num_vote*100}% ({diana})", file = pypoll_output)
 print(f"Raymon Anthony Doane: {raymon/num_vote*100}% ({raymon})", file = pypoll_output)
-print(f"the winner is: {candidates[ind]}")
+print(f"the winner is: {candidates[ind]}", file = pypoll_output)
 
 pypoll_output.close()
 
+#moves .txt file to analysis folder
 shutil.move("pypoll.txt", "analysis" )
